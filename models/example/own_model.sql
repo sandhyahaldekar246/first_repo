@@ -1,24 +1,11 @@
 with customers as (
 
-    select
-        id as customer_id,
-        first_name,
-        last_name
-
-    from pc_dbt_db.dbt_svangala.customers
-
+select * from {{ref("stg_cust")}}
 ),
 
 orders as (
 
-    select
-        id as order_id,
-        user_id as customer_id,
-        order_date,
-        status
-
-    from pc_dbt_db.dbt_svangala.orders
-
+    select * from {{ref("stg_orders")}}
 ),
 
 customer_orders as (
